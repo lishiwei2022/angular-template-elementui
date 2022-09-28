@@ -1,0 +1,5 @@
+<div class="tabs">
+  <el-tag *ngFor="let tab of openTabs;index as i" [closable]="true" [hit]="tab.selected"   [type]="tab.type" (close)="closeTab(tab,i)">
+     <span (click)="activeTab(tab)">{{tab.name}}</span>
+  </el-tag>
+</div>

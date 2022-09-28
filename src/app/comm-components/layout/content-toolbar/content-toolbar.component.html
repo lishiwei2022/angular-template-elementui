@@ -1,0 +1,25 @@
+<div class="toolbar">
+  <!--  控制左侧菜单收起/展开的按钮-->
+  <div class="icon" [class.silderClose]="sliderclose" (click)="sliderMenuToggle()">
+    <i class="fa fa-bars"></i>
+  </div>
+  <!--  面包屑-->
+  <!--  <el-breadcrumb (next)="breadCumbHandle($event)" [prevent]="true">-->
+  <!--    <el-breadcrumb-item *ngFor="let breadcrumb of breadCrumbList"  to="{{breadcrumb.routepath}}">{{breadcrumb.text}}</el-breadcrumb-item>-->
+  <!--  </el-breadcrumb>-->
+  <div class="breadcrumb">
+    <div class="breadcrumb-item" *ngFor="let breadcrumb of breadCrumbList;index as i"
+         (click)="breadCumbHandle(breadcrumb.routepath)">
+      <span class="item-name">{{breadcrumb.text}}</span>
+      <span class="item-separator" *ngIf="i<breadCrumbList.length-1">/</span>
+    </div>
+  </div>
+
+  <!--  用户/系统相关-->
+  <div class="user-head">
+    <el-dropdown [model]="dropItemDatas" (selected)="handle($event)">
+      <i class="fa fa-user"></i> {{userobj.username}}
+    </el-dropdown>
+  </div>
+
+</div>

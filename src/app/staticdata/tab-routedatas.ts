@@ -1,0 +1,75 @@
+import {TabRouter} from "../model/tab.mode";
+
+export const tabRouterMapping: TabRouter[] = [{
+  title: 'demo表格',
+  module: 'sys/table',
+  routepath: '',
+  params: {},
+  queryParams: {},
+}, {
+  title: '用户管理',
+  module: 'sys/user',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: "添加用户",
+  module: 'sys/user/add',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: '编辑用户',
+  module: "sys/user/edit",
+  routepath: "",
+  params: {},
+  queryParams: {}
+}, {
+  title: "用户详情",
+  module: "sys/user/detail",
+  routepath: "",
+  params: {},
+  queryParams: {}
+}, {
+  title: "角色管理",
+  module: 'sys/role',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: "添加角色",
+  module: 'sys/role/add',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: '编辑角色',
+  module: 'sys/role/edit',
+  routepath: "",
+  params: {},
+  queryParams: {}
+}, {
+  title: "菜单管理",
+  module: 'sys/menu',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: '添加菜单',
+  module: 'sys/menu/add',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: "编辑菜单",
+  module: "sys/menu/edit",
+  routepath: '',
+  params: {},
+  queryParams: {}
+}, {
+  title: "demo表单",
+  module: 'sys/form',
+  routepath: '',
+  params: {},
+  queryParams: {}
+}]

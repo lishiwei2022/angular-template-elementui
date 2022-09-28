@@ -1,0 +1,99 @@
+<div class="app-login-page" [style.height]="autoH">
+  <div class="myform">
+    <div el-container direction="vertical">
+      <div el-main>
+        <div style="text-align: center">
+          <span style="color: #00E466;font-size: 20px">单页面web js框架：</span> <a href="https://angular.cn/">angular框架</a>
+        </div>
+        <div style="text-align: center;margin-bottom: 20px">
+          <span style="color: #00E466;font-size: 20px">UI框架:</span> <a href="https://element-angular.faas.ele.me/guide/install">element-ui
+          [angular版本]</a>
+        </div>
+        <el-form [formGroup]="loginform" label-width="100px" [show-icon]="true" [show-message]="true"
+                 el-class="form-demo">
+          <div el-row>
+            <div el-col [span]='24'>
+              <el-form-item label="用户" [required]="false" [status]="validatorE.statusCtrl('name',loginform)"
+                            [error]="validatorE.messageCtrl('name',loginform)">
+                <el-input formControlName="name">
+                  <ng-template #prepend>
+                    <i class="fa fa-user"></i>
+                  </ng-template>
+                </el-input>
+              </el-form-item>
+            </div>
+          </div>
+
+          <div el-row>
+            <div el-col [span]='24'>
+              <el-form-item label="密码" [required]="false" [status]="validatorE.statusCtrl('pwd',loginform)"
+                            [error]="validatorE.messageCtrl('pwd',loginform)">
+                <el-input formControlName="pwd">
+                  <ng-template #prepend>
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </ng-template>
+                </el-input>
+              </el-form-item>
+            </div>
+          </div>
+          <div el-row>
+            <div el-col [offset]='12' [span]='12'>
+              <el-form-item>
+                <el-button type="primary" (click)="login()"> 登入</el-button>
+              </el-form-item>
+            </div>
+          </div>
+        </el-form>
+      </div>
+    </div>
+  </div>
+  <!--  <form class="form form-horizontal" role="form" [formGroup]="loginform">-->
+  <!--    <div class="row">-->
+  <!--      <div class="col-lg-4 col-lg-offset-4">-->
+  <!--        <div class="form-group">-->
+  <!--          <label class="col-lg-3 control-label">用户名</label>-->
+  <!--          <div class="col-lg-9">-->
+  <!--            <div class="input-group">-->
+  <!--                  <span class="input-group-addon">-->
+  <!--                    <i class="fa fa-user"></i>-->
+  <!--                  </span>-->
+  <!--              <input type="text" class="form-control" placeholder="用户名" required formControlName="name">-->
+  <!--            </div>-->
+  <!--            <div *ngIf="loginform.get('name')?.invalid&&(loginform.get('name')?.touched||loginform.get('name')?.dirty)">-->
+  <!--              <div *ngIf="loginform.hasError('required','name')">-->
+  <!--                <span class="text-danger">用户名不能为空</span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="row">-->
+  <!--      <div class="col-lg-4 col-lg-offset-4">-->
+  <!--        <div class="form-group">-->
+  <!--          <label class="col-lg-3 control-label">密码</label>-->
+  <!--          <div class="col-lg-9">-->
+  <!--            <div class="input-group">-->
+  <!--                  <span class="input-group-addon">-->
+  <!--                    <i class="fa fa-lock" aria-hidden="true"></i>-->
+  <!--                  </span>-->
+  <!--              <input type="password" class="form-control" placeholder="密码" required formControlName="pwd">-->
+  <!--            </div>-->
+  <!--            <div *ngIf="loginform.get('name')?.invalid&&(loginform.get('name')?.touched||loginform.get('name')?.dirty)">-->
+  <!--              <div *ngIf="loginform.hasError('name','required')">-->
+  <!--                <span>用户名不能为空</span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="row">-->
+  <!--      <div class="col-lg-4 col-lg-offset-4 text-right">-->
+  <!--        <button type="button" class="btn btn-primary" [disabled]="loginform.invalid" (click)="login2()">登入</button>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </form>-->
+</div>
+
+

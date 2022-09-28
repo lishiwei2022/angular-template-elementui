@@ -1,0 +1,30 @@
+<div class="slider">
+  <!--  app-logo-->
+  <div class="app-logo">
+    <img src="assets/logo_big.png">
+  </div>
+  <div class="slider-close">
+    <ng-container *ngFor="let group of sliderMenus;">
+      <!--        菜单组作为菜单-->
+      <ng-container *ngIf="!group.children">
+        <div class="slider-close-item">
+<!--          <el-tooltip placement="right">-->
+<!--            <span> <i class="fa" [ngClass]="group.icon"></i> </span>-->
+<!--            <ng-template #tip>-->
+<!--              <span> {{group.label}}</span>-->
+<!--            </ng-template>-->
+<!--          </el-tooltip>-->
+          <span> <i class="fa" [ngClass]="group.icon"></i> </span>
+        </div>
+      </ng-container>
+      <!--      菜单组下面有二级菜单，菜单组不作为菜单-->
+      <ng-container *ngIf="group.children&&group.children.length">
+         <div class="slider-close-item">
+           <el-dropdown [model]="group.children" menu-align="start" (selected)="menuchange($event)">
+             <i class="fa" [ngClass]="group.icon"></i>
+           </el-dropdown>
+         </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

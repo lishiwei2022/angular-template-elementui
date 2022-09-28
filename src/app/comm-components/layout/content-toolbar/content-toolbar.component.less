@@ -1,0 +1,31 @@
+.toolbar{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 0px 15px;
+  .icon{
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .silderClose{
+    transform: rotateZ(90deg);
+  }
+  .breadcrumb{
+    position: absolute;
+    left: 50px;
+    top: 8px;
+    display: flex;
+    .breadcrumb-item{
+      margin-right: 5px;
+      .item-separator{
+        margin-left: 5px;
+      }
+    }
+  }
+}

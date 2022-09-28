@@ -1,0 +1,29 @@
+<div class="slider">
+<!--  app-logo-->
+  <div class="app-logo">
+    <img src="assets/logo_big.png">
+  </div>
+<!--   app-menus-->
+<!--  注意，只处理到了二级菜单-->
+  <el-menu [model]="activeMenuPath" background-color="#001" text-color="#a7b1c2" [unique-opened]="onlyOneOpen" [default-openeds]="activeMenuPathList"  (modelChange)="menuchange($event)" active-text-color="#fff"  class="el-menu-vertical-demo">
+    <ng-container *ngFor="let group of sliderMenus;">
+<!--        菜单组作为菜单-->
+       <ng-container *ngIf="!group.children">
+         <el-menu-item [index]="group.routepath">
+           <i class="fa" [ngClass]="group.icon"></i>  {{group.name}}
+         </el-menu-item>
+       </ng-container>
+<!--      菜单组下面有二级菜单，菜单组不作为菜单-->
+       <ng-container *ngIf="group.children&&group.children.length">
+         <el-submenu>
+           <ng-template #title>
+             <i class="fa" [ngClass]="group.icon"></i> {{group.name}}
+           </ng-template>
+           <el-menu-item *ngFor="let menu of group.children" [index]="menu.routepath">
+             <i class="fa" [ngClass]="menu.icon"></i>  {{menu.name}}
+           </el-menu-item>
+         </el-submenu>
+       </ng-container>
+    </ng-container>
+  </el-menu>
+</div>

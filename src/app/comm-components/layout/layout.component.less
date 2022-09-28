@@ -1,0 +1,60 @@
+.main {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .main-slider {
+    background-color: #ddd;
+    height: 100%;
+  }
+
+  .slider-menu-normal {
+    width: 200px;
+    height: 100%;
+  }
+
+  .slider-menu-close {
+    width: 40px;
+    height: 100%;
+  }
+
+  .main-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: left 0.3s ease-in-out;
+    overflow: hidden;
+
+    .content-header {
+      height: 80px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+    }
+
+    .content-footer {
+      height: 40px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .content-main {
+      position: absolute;
+      left: 0;
+      top: 80px;
+      bottom: 40px;
+      right: 0;
+      padding: 10px 15px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+}
+

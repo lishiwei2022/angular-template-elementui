@@ -1,0 +1,22 @@
+<div class="main" [style.height]="pageHeight">
+  <div  class="main-slider"  [ngClass]="{'slider-menu-normal':!sliderClose,'slider-menu-close': sliderClose }">
+    <ng-container *ngIf="!sliderClose">
+      <app-slider [menus]="menus"></app-slider>
+    </ng-container>
+    <ng-container *ngIf="sliderClose">
+      <app-slider-close [menus]="menus"></app-slider-close>
+    </ng-container>
+  </div>
+  <div  class="main-content"  [ngStyle]="{'left': sliderClose?'40px':'200px' }" >
+    <div class="content-header">
+      <app-content-toolbar (sliderCollsp)="sliderToggle($event)"></app-content-toolbar>
+      <app-content-tabs></app-content-tabs>
+    </div>
+    <div class="content-main">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="content-footer">
+      <app-content-footer></app-content-footer>
+    </div>
+  </div>
+</div>

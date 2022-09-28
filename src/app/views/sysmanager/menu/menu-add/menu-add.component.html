@@ -1,0 +1,50 @@
+<div class="menu-page-addEdit">
+  <el-form [formGroup]="menuForm" label-width="100px" [show-icon]="true" [show-message]="true"
+           el-class="form-demo">
+    <div el-row>
+      <div el-col [span]='24'>
+        <el-form-item label="菜单级别" [required]="true" [status]="validatorE.statusCtrl('leval',menuForm)"
+                      [error]="validatorE.messageCtrl('leval',menuForm)">
+          <el-select placeholder="请选择" formControlName="leval" [clearable]="false" (modelChange)="levalChange($event)">
+            <el-option *ngFor="let item of menuLevals"
+                       [label]="item.label"
+                       [value]="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </div>
+    </div>
+    <div el-row>
+      <div el-col [span]='24'>
+        <el-form-item label="菜单名称" [required]="true" [status]="validatorE.statusCtrl('name',menuForm)"
+                      [error]="validatorE.messageCtrl('name',menuForm)">
+          <el-input formControlName="name"></el-input>
+        </el-form-item>
+      </div>
+    </div>
+
+    <div el-row>
+      <div el-col [span]='24'>
+        <el-form-item label="菜单图标" [required]="false" [status]="validatorE.statusCtrl('icon',menuForm)"
+                      [error]="validatorE.messageCtrl('icon',menuForm)">
+          <el-input formControlName="icon"></el-input>
+        </el-form-item>
+      </div>
+    </div>
+    <div el-row>
+      <div el-col [span]='24'>
+        <el-form-item label="路由路径" [required]="false" [status]="validatorE.statusCtrl('routepath',menuForm)"
+                      [error]="validatorE.messageCtrl('routepath',menuForm)">
+          <el-input formControlName="routepath"></el-input>
+        </el-form-item>
+      </div>
+    </div>
+    <div el-row>
+      <div el-col [offset]="12" [span]='12' style="text-align: right">
+        <el-button type="default" (click)="back()">取消</el-button>
+        <el-button type="primary" (click)="handMenu()">保存</el-button>
+      </div>
+    </div>
+
+  </el-form>
+</div>
