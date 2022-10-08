@@ -3,6 +3,7 @@ import {UserSearchForm} from "../../../model/searchForm.mode";
 import {PaginationObj, UserListItem} from "../../../model/searchResult.mode";
 import {SysService} from "../../../service/sys.service";
 import {Router} from "@angular/router";
+import {EventService} from "../../../util/event/event.service";
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,8 @@ export class UserComponent implements OnInit {
   list: UserListItem[];
 
   constructor(private sysService: SysService,
-              private router: Router) {
+              private router: Router,
+              private eventService: EventService) {
     this.searchForm = {
       par1: '',
       par2: "",
@@ -31,6 +33,11 @@ export class UserComponent implements OnInit {
       total: 0,
       pageSize: this.searchForm.pageSize
     };
+
+    this.eventService.refreshComponentSubscible('sys/user', () => {
+      this.searchForm.pageNumber = 1;
+      this.search();
+    });
   }
 
   ngOnInit(): void {

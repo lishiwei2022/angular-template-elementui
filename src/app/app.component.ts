@@ -6,6 +6,7 @@ import {BreadCrumbService} from "./service/bread-crumb.service";
 import {TabRouterService} from "./service/tab-router.service";
 import {TabRouter} from "./model/tab.mode";
 import {Title} from '@angular/platform-browser';
+import {EventService} from "./util/event/event.service";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent {
               private sessionService: sessionStorageService,
               private breadcrumbService: BreadCrumbService,
               private tabRouterService: TabRouterService,
-              private titleService: Title) {
+              private titleService: Title,
+              private eventService: EventService) {
     const detectZoom = () => {
       let ratio = 0;
       let screen = window.screen as any;
@@ -80,7 +82,7 @@ export class AppComponent {
         //tab数据处理
         e.url = decodeURIComponent(e.url);  //路由参数带 /的， 被多次encodeURIComponent 转移，导致相同的url，通过routePath判断是不同的
         let openTabRouters = this.sessionService.getObj("openTabRouters") as TabRouter[];
-        openTabRouters = openTabRouters?openTabRouters:[];
+        openTabRouters = openTabRouters ? openTabRouters : [];
         let newopenTabRouter: TabRouter | undefined = this.tabRouterService.EfillRouteData(e);  //e 转换为  TabRouter
         //和 openTabRouters 对比， 处理相同 module(相同业务页面)，不同参数多个tab页
         if (newopenTabRouter != undefined) {
@@ -104,6 +106,12 @@ export class AppComponent {
             data: {}
           });
         }
+        // 列表页缓存（查询表单和查询结果都会被缓存。  需求： 查询表单内容缓存，进入列表页需要重新查询）
+        console.log("e.url",e.url);
+        this.eventService.emitChange({
+          type: 'refreshList',
+          componentPath: e.url    // 路由跳转设置 skipLocationChange =true, 那么 路由可选参数/请求参数会包含在 e.url中， 否则不包含
+        });
       }
     });
   }

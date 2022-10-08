@@ -3,6 +3,7 @@ import {RoleSearchForm} from "../../../model/searchForm.mode";
 import {PaginationObj, RoleListItem} from "../../../model/searchResult.mode";
 import {SysService} from "../../../service/sys.service";
 import {Router} from "@angular/router";
+import {EventService} from "../../../util/event/event.service";
 
 @Component({
   selector: 'app-role',
@@ -17,7 +18,8 @@ export class RoleComponent implements OnInit {
   loading: boolean = false;  //表格加载效果
 
   constructor(private sysService: SysService,
-              private router: Router) {
+              private router: Router,
+              private eventService: EventService) {
     this.searchForm = {
       par1: '',
       par2: "",
@@ -31,6 +33,10 @@ export class RoleComponent implements OnInit {
       total: 0,
       pageSize: this.searchForm.pageSize
     };
+    this.eventService.refreshComponentSubscible('sys/role', () => {
+      this.searchForm.pageNumber = 1;
+      this.search();
+    })
   }
 
   ngOnInit(): void {
