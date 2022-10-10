@@ -42,14 +42,14 @@ export class HttpInterceptor1 implements HttpInterceptor {
     // 请求头部 拦截，处理加密和 token
     let header = new HttpHeaders().set("Content-Type", "application/json;charset=UTF-8");
     const url = req.url;
-    if (url.indexOf("auth/getSinkey") == -1) {
+    if (url.indexOf("token/getSinkey") == -1) {
       //请求sinkey的接口，不需要对参数加密
       //请求sinkey的接口，不需要token校验
       //####除了 请求sinkey的接口，都需要对请求参数加密
       const sinkey = this.util.getSinkey();
       header = header.set("xc_client_sessionid", sinkey);
       header = header.set("Content-Signature", this.util.getSignReqobj(sinkey, JSON.stringify(reqobj)));
-      if (url.indexOf("auth/login") == -1) {
+      if (url.indexOf("token/login") == -1) {
         //登入接口（获取token)，不需要token校验
         //########除了 登入接口， 都需要token校验
         const access_token = this.util.getToken();
