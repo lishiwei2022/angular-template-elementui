@@ -48,7 +48,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "sourceMap": false // 默认值是false
             },
             "development": {
               "buildOptimizer": false,
